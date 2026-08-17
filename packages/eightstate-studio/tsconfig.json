@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["../playground/src/*"],
+      "react": ["../playground/node_modules/@types/react/index.d.ts"],
+      "react/jsx-runtime": ["../playground/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react-dom/client": ["../playground/node_modules/@types/react-dom/client.d.ts"],
+      "react-router": ["../playground/node_modules/react-router/dist/production/index.d.ts"]
+    },
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src/**/*", "vite.config.ts", "vitest.config.ts"]
+}

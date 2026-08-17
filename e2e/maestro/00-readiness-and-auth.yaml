@@ -1,0 +1,9 @@
+url: ${E2E_BASE_URL}
+name: 00-readiness-and-auth
+tags:
+  - smoke
+  - local-parity
+---
+- launchApp
+- runScript: scripts/assert-readiness.js
+- runFlow: subflows/login.yaml
