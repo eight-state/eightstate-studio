@@ -1,0 +1,28 @@
+url: ${E2E_BASE_URL}
+name: 20-native-experiment-comparison
+tags:
+  - local-parity
+  - experiments
+---
+- runScript: scripts/seed-native-comparison.js
+- runFlow: subflows/login.yaml
+- openLink: ${E2E_BASE_URL}/datasets/${output.datasetId}?tab=experiments&auth_header=Bearer%20${E2E_API_KEY}
+- extendedWaitUntil:
+    visible: Compare
+    timeout: 90000
+- tapOn:
+    text: Compare
+    index: 0
+- extendedWaitUntil:
+    visible:
+      css: '[aria-label="Select experiment ${output.baselineId}"]'
+    timeout: 30000
+- tapOn:
+    css: '[aria-label="Select experiment ${output.baselineId}"]'
+- tapOn:
+    css: '[aria-label="Select experiment ${output.contenderId}"]'
+- tapOn:
+    text: Compare Experiments
+- extendedWaitUntil:
+    visible: Dataset Experiments Comparison
+    timeout: 30000

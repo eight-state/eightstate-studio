@@ -1,0 +1,22 @@
+url: ${E2E_BASE_URL}
+name: 10-agent-builder-absent
+tags:
+  - smoke
+  - local-parity
+---
+- runFlow: subflows/login.yaml
+- assertVisible:
+    css: '[data-testid="eightstate-studio-root"]'
+- assertNotVisible:
+    css: 'a[href^="/agent-builder"]'
+- assertNotVisible:
+    css: '[data-testid^="agent-builder"]'
+- openLink: ${E2E_BASE_URL}/agent-builder?auth_header=Bearer%20${E2E_API_KEY}
+- extendedWaitUntil:
+    visible:
+      css: '[data-testid="eightstate-studio-root"]'
+    timeout: 30000
+- assertNotVisible:
+    css: 'a[href^="/agent-builder"]'
+- assertNotVisible:
+    css: '[data-testid^="agent-builder"]'

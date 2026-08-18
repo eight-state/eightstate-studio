@@ -1,0 +1,27 @@
+url: ${E2E_BASE_URL}
+name: 30-experiment-lifecycle
+tags:
+  - local-parity
+  - experiments
+---
+- runScript: scripts/seed-experiment-lifecycle.js
+- runFlow: subflows/login.yaml
+- openLink: ${E2E_BASE_URL}/datasets/${output.datasetId}/experiments/${output.experimentId}?auth_header=Bearer%20${E2E_API_KEY}
+- extendedWaitUntil:
+    visible:
+      css: '[data-testid="experiment-cancel"]'
+    timeout: 30000
+- tapOn:
+    css: '[data-testid="experiment-cancel"]'
+- extendedWaitUntil:
+    visible:
+      css: '[data-testid="experiment-rerun"]'
+    timeout: 30000
+- tapOn:
+    css: '[data-testid="experiment-rerun"]'
+- extendedWaitUntil:
+    visible:
+      css: '[data-testid="experiment-cancel"]'
+    timeout: 30000
+- tapOn:
+    css: '[data-testid="experiment-cancel"]'

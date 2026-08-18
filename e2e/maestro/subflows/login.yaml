@@ -1,0 +1,9 @@
+url: ${E2E_BASE_URL}
+name: login
+---
+- clearState: ${E2E_BASE_URL}
+- openLink: ${E2E_BASE_URL}/?auth_header=Bearer%20${E2E_API_KEY}
+- extendedWaitUntil:
+    visible:
+      css: '[data-testid="eightstate-studio-root"]'
+    timeout: 30000

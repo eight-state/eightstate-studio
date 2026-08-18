@@ -1,0 +1,12 @@
+.git
+**/.git
+**/node_modules
+**/dist
+**/.turbo
+**/.mastra
+**/*.db
+**/*.db-*
+**/.DS_Store
+docs
+examples
+explorations
